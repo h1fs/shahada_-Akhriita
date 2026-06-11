@@ -122,7 +122,7 @@
             display: flex;
             align-items: center;
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-            white-space: normal; /* السماح للاسم بالنزول لسطر جديد إذا كان طويلاً لمنع خروجه أو ميله */
+            white-space: normal;
             word-wrap: break-word;
         }
 
@@ -148,24 +148,22 @@
             z-index: 3;
         }
 
+        /* حاوية الشعار الجديدة المتوافقة تماماً مع الأبعاد الأفقية والشاشات */
         .logo-container {
-            width: 85px;
-            height: 85px;
-            margin-bottom: 12px;
-            background: #ffffff;
-            border: 3px solid var(--primary-green);
-            border-radius: 50px;
+            width: 100%;
+            max-width: 280px; /* العرض الأقصى المناسب للشعار الأفقي */
+            height: auto;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-            overflow: hidden;
         }
 
         .logo-placeholder {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
+            max-height: 90px; /* لحماية الشعار من التضخم الزائد */
+            object-fit: contain; /* يضمن الحفاظ على الأبعاد والشفافية بدون قص أو ضغط */
         }
 
         .dev-title {
@@ -187,7 +185,7 @@
             display: flex;
             justify-content: center;
             gap: 20px;
-            flex-wrap: wrap; /* تصفيف تلقائي على الشاشات الصغيرة */
+            flex-wrap: wrap;
         }
 
         .social-card {
@@ -234,21 +232,16 @@
             color: #555;
         }
 
-        /* ---------------------------------------------- */
         /* قواعد التجاوب وضمان ملاءمة الشاشات والأجهزة الهواتف والتابلت */
-        /* ---------------------------------------------- */
-        
-        /* للشاشات المتوسطة (الأجهزة اللوحية والتابلت وعرض المتصفحات الصغير) */
         @media (max-width: 992px) {
             .grid-container {
-                grid-template-columns: repeat(2, 1fr); /* عمودين بدلاً من 4 */
+                grid-template-columns: repeat(2, 1fr);
             }
             .main-title {
                 font-size: 22px;
             }
         }
 
-        /* للشاشات الصغيرة جداً (الهواتف المحمولة بجميع أنواعها) */
         @media (max-width: 600px) {
             body {
                 padding: 10px;
@@ -268,7 +261,7 @@
                 font-size: 18px;
             }
             .grid-container {
-                grid-template-columns: 1fr; /* عمود واحد مريح جداً لكل اسم بدون أي تداخل أو ميلان */
+                grid-template-columns: 1fr;
                 gap: 8px;
             }
             .name-item {
@@ -277,6 +270,9 @@
             }
             .social-container {
                 gap: 15px;
+            }
+            .logo-container {
+                max-width: 200px; /* تصغير ذكي ومتناسق على الهواتف المحمولة */
             }
         }
     </style>
@@ -315,7 +311,7 @@
             <div class="name-item">علاوي الصالح العليوي</div>
             <div class="name-item">رقية الملة الأحمد الخوجة</div>
             <div class="name-item">ابراهيم العبود الجابر الخوجة</div>
-            <div class="name-item">أحمد المحمد السياد</div>
+            <div class="name-item">أحمد المححمد السياد</div>
             <div class="name-item">غالي المحمد الريس</div>
             <div class="name-item">حمد السلوم الياسين</div>
             <div class="name-item">محمد الأحمد السلوم الياسين</div>
@@ -414,7 +410,7 @@
             <div class="name-item">عبد القادر الأحمد العبدالله</div>
             <div class="name-item">عبدالله حمدان العبدالله</div>
             <div class="name-item">قاسم المحمود العليوي الخليل</div>
-            <div class="name-item">فايز الحسين العليوي الخليل</div>
+            <div class="name-item">fايز الحسين العليوي الخليل</div>
             <div class="name-item">باسل العايد العليوي الخليل</div>
             <div class="name-item">حميد الابراهيم الأحمد الخليل</div>
             <div class="name-item">موسى المخيسن الفياض</div>
@@ -498,7 +494,7 @@
 
     <div class="footer-developer-section">
         <div class="logo-container">
-            <img src="sh3.png" alt="Logo" class="logo-placeholder" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\"fa-solid fa-shield-halved\" style=\"font-size:32px; color:var(--primary-green);\"></i>'">
+            <img src="sh3.png" alt="الشعار" class="logo-placeholder" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\"fa-solid fa-shield-halved\" style=\"font-size:32px; color:var(--primary-green);\"></i>'">
         </div>
         
         <p class="dev-title">تصميم وتطوير</p>
