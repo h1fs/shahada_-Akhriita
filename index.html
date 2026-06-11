@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>لوحة تكريمية رسمية فاخرة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #007A3D;
+            --dark-green: #004D26;
+            --gold-accent: #D4AF37;
+            --text-dark: #1A1A1A;
+            --bg-light: #FAFAFA;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px;
+            background-color: #ECEFF1;
+            font-family: 'Cairo', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* اللوحة الرئيسية */
+        .memorial-board {
+            width: 1200px;
+            background: var(--bg-light);
+            border: 12px double var(--dark-green);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            position: relative;
+            padding: 30px;
+            box-sizing: border-box;
+            background-image: 
+                radial-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.95)),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><polygon points="50,5 95,95 5,95" fill="none" stroke="%23007A3D" stroke-width="0.3" opacity="0.1"/></svg>'); /* زخرفة خفيفة */
+        }
+
+        /* العلامة المائية في الخلفية (نسر/حمامة مبسطة) */
+        .memorial-board::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23007A3D" opacity="0.03"><path d="M12 2L2 22h20L12 2zm0 3.99L19.53 19H4.47L12 5.99z"/></svg>') no-repeat center;
+            background-size: contain;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* الشريط العلوي - العلم */
+        .top-banner {
+            background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+            color: #fff;
+            padding: 25px;
+            text-align: center;
+            border-radius: 6px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            z-index: 2;
+        }
+
+        .top-banner::before {
+            content: "★  ★  ★";
+            display: block;
+            color: #E52B20;
+            font-size: 24px;
+            letter-spacing: 10px;
+            margin-bottom: 10px;
+        }
+
+        .top-intro {
+            font-size: 14px;
+            line-height: 1.8;
+            font-weight: 600;
+            margin: 0 0 20px 0;
+            text-align: justify;
+            color: #E8F5E9;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 15px;
+        }
+
+        .main-title {
+            font-size: 28px;
+            font-weight: 900;
+            margin: 0;
+            color: #FFFFFF;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+        }
+
+        /* النطاق الفاصل الأنيق */
+        .divider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 25px 0;
+        }
+        .divider-line {
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(to left, transparent, var(--primary-green), transparent);
+        }
+        .divider-icon {
+            color: var(--gold-accent);
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
+        /* شبكة الأسماء */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .grid-column {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(0, 122, 61, 0.15);
+            border-radius: 4px;
+            padding: 5px;
+        }
+
+        .name-item {
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            background: #ffffff;
+            border-right: 4px solid var(--primary-green);
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .name-item::before {
+            content: "✦";
+            color: #E52B20;
+            margin-left: 8px;
+            font-size: 10px;
+        }
+
+        .name-item:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="memorial-board">
+    <div class="top-banner">
+        <p class="top-intro">
+            محصلة ما قدمت وقدمت عشيرة #البوشعيب من قبيلة #البوسرايا منذ اندلاع الثورة السورية حتى التحرير ١٨٢ قتيل نحسبهم والله حسيبهم، من الشهداء ولا نزكي على الله أحد منهم أكثر من ١٢٠ مقاتل . ارتقوا على إمتداد جبهات القتال في سورية في دير الزور والحسكة والرقة حتى حلب وحماة وإدلب وتدمر وأطراف دمشق ، والأخرين قتلو جراء القصف والألغام وفي السجون ومنهم مجموعة إعلاميين الثورة قتلو أعدام ميداني في الخريطة
+        </p>
+        <h1 class="main-title">نسأل الله لهم الرحمة والمغفرة والفوز بالجنان</h1>
+    </div>
+
+    <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-icon">❖</div>
+        <div class="divider-line"></div>
+    </div>
+
+    <div class="grid-container">
+        
+        <div class="grid-column">
+            <div class="name-item">أسامة العبيد الجمعة</div>
+            <div class="name-item">عمر العبيد الجمعة</div>
+            <div class="name-item">لطوف جميل عبود الشعيني</div>
+            <div class="name-item">صبحة أحمد السيد إبراهيم الشعيني</div>
+            <div class="name-item">هناء صالح / زوجة زياد عقلة الشعبي</div>
+            <div class="name-item">علي إبراهيم محمد الحاج أحمد الشعيبي</div>
+            <div class="name-item">أحمد الاسماعيل العبيد</div>
+            <div class="name-item">عبد الأسعد العبيد</div>
+            <div class="name-item">إبراهيم البوحميدي</div>
+            <div class="name-item">عبد الكريم إبراهيم البوحميدي</div>
+            <div class="name-item">ابراهيم الخلف الجدوان</div>
+            <div class="name-item">علاوي الصالح العليوي</div>
+            <div class="name-item">رقية الملة الأحمد الخوجة</div>
+            <div class="name-item">ابراهيم العبود الجابر الخوجة</div>
+            <div class="name-item">أحمد المحمد السياد</div>
+            <div class="name-item">غالي المحمد الريس</div>
+            <div class="name-item">حمد السلوم الياسين</div>
+            <div class="name-item">محمد الأحمد السلوم الياسين</div>
+            <div class="name-item">خليل الخلف الجابر</div>
+            <div class="name-item">عثمان المخلوف الجابر</div>
+            <div class="name-item">موسى الفرج الطعمة</div>
+            <div class="name-item">إبراهيم عبد الحميد الطه</div>
+            <div class="name-item">حميد فاضل الطه</div>
+            <div class="name-item">محمد فاضل الطه</div>
+            <div class="name-item">عبد اللطيف فاضل الطه</div>
+            <div class="name-item">عبدالله فاضل الطه</div>
+            <div class="name-item">ياسين محمد الجاسم الطه</div>
+            <div class="name-item">عبدالله حسن العبدي الطه</div>
+            <div class="name-item">ابراهيم علي الزهدي الطه</div>
+            <div class="name-item">محمد حمد الحسين الطه</div>
+            <div class="name-item">محمد حاكم الياسين المصطفى</div>
+            <div class="name-item">ابراهيم الفرج الحاكم الياسين المصطفى</div>
+            <div class="name-item">عبدالله الحسن الحاكم الياسين المصطفى</div>
+            <div class="name-item">خليل الفرج الحسين العلي الطه</div>
+            <div class="name-item">حميد السعيد العلي الطه</div>
+            <div class="name-item">ياسين الحسان الحباش</div>
+            <div class="name-item">ابراهيم الجسوم المحمد</div>
+            <div class="name-item">أحمد الجسوم المحمد</div>
+            <div class="name-item">عليوي العبدي المحمد</div>
+            <div class="name-item">عمر الأحمد العيساوي</div>
+            <div class="name-item">ابراهيم الجابر الجاسم</div>
+            <div class="name-item">عيسى الجاسم الفنادي</div>
+            <div class="name-item">نجمة الجاسم الفنادي</div>
+            <div class="name-item">خلفة الجاسم الفنادي</div>
+            <div class="name-item">بشار الذياب الحمدان</div>
+            <div class="name-item">بشار الذياب الحمدان</div>
+        </div>
+
+        <div class="grid-column">
+            <div class="name-item">خلف البوشاكر</div>
+            <div class="name-item">جاسر البوشاكر</div>
+            <div class="name-item">موسى الحسين البوشاكر</div>
+            <div class="name-item">عبد الحمود العبودي</div>
+            <div class="name-item">عيسى الحمود العبودي</div>
+            <div class="name-item">طه الحمادي العبودي</div>
+            <div class="name-item">حسين الطه العبودي</div>
+            <div class="name-item">حمود الطه الحناش</div>
+            <div class="name-item">نادر محمد الحمادي</div>
+            <div class="name-item">عبد الحميد الغافل الطبيش</div>
+            <div class="name-item">أمين الغافل الطبيش</div>
+            <div class="name-item">راغب الغافل الطبيش</div>
+            <div class="name-item">محمد النوري الطبيش</div>
+            <div class="name-item">أحمد الأمين الطبيش</div>
+            <div class="name-item">ياسين الطبيش</div>
+            <div class="name-item">محمد الخليف الاسماعيل الدوش</div>
+            <div class="name-item">صالح الخليف الاسماعيل الدوش</div>
+            <div class="name-item">فياض الاسماعيل الطه الدوش</div>
+            <div class="name-item">حسين الاسماعيل الطه الدوش</div>
+            <div class="name-item">أحمد العلي الحسين الاسماعيل</div>
+            <div class="name-item">حسين العلي الحسين الاسماعيل</div>
+            <div class="name-item">طه المحمد الطه المحمد</div>
+            <div class="name-item">أحمد المحمد الطه المحمد</div>
+            <div class="name-item">عبدالله الخليل الرميض</div>
+            <div class="name-item">رمضان عبدالله الرميض</div>
+            <div class="name-item">محيسن الخلف العلاوة</div>
+            <div class="name-item">أحمد المحيسن العلاوة</div>
+            <div class="name-item">أحمد الرمضان العلي</div>
+            <div class="name-item">علي المحمود المخيسن</div>
+            <div class="name-item">محمود الحمادي الخليفة</div>
+            <div class="name-item">شريف الياسين الشفيق</div>
+            <div class="name-item">أحمد الفرج الحميد الحجي ابراهيم</div>
+            <div class="name-item">عيسى العلاوي العيش</div>
+            <div class="name-item">علي محمد الخلف الحميد</div>
+            <div class="name-item">حسن طه الحسون الحميد</div>
+            <div class="name-item">سعيد طه الفرج الحميد</div>
+            <div class="name-item">ابراهيم حميدي الحسون الحميد</div>
+            <div class="name-item">خليل محمد الفرج الحميد</div>
+            <div class="name-item">يحيى محمد الفرج الحميد</div>
+            <div class="name-item">نوح الحمادي الحسين الحميد</div>
+            <div class="name-item">عمر أحمد طه الفرج الحميد</div>
+            <div class="name-item">ناصر الياسين الخالد</div>
+            <div class="name-item">ياسين أحمد الملا خلف</div>
+            <div class="name-item">حمود أحمد الملا خلف</div>
+            <div class="name-item">حسين أحمد الملا خلف</div>
+            <div class="name-item">حسين أحمد الملا خلف</div>
+        </div>
+
+        <div class="grid-column">
+            <div class="name-item">حميد محمد الملا خلف</div>
+            <div class="name-item">صالح أحمد الملا خلف</div>
+            <div class="name-item">أحمد الصالح العبيد الملا</div>
+            <div class="name-item">محمود العبيد الفرج</div>
+            <div class="name-item">محمد العلي الحمادة</div>
+            <div class="name-item">محمود سلوم الخليل</div>
+            <div class="name-item">بلال العواد العبدالله</div>
+            <div class="name-item">بهاء الشيخ العبدالله</div>
+            <div class="name-item">محمود الحاكم الصالح</div>
+            <div class="name-item">ابراهيم الحاكم الصالح</div>
+            <div class="name-item">علي الابراهيم العبدالله</div>
+            <div class="name-item">أحمد المحمد العبدالله</div>
+            <div class="name-item">عبد القادر الأحمد العبدالله</div>
+            <div class="name-item">عبدالله حمدان العبدالله</div>
+            <div class="name-item">قاسم المحمود العليوي الخليل</div>
+            <div class="name-item">فايز الحسين العليوي الخليل</div>
+            <div class="name-item">باسل العايد العليوي الخليل</div>
+            <div class="name-item">حميد الابراهيم الأحمد الخليل</div>
+            <div class="name-item">موسى المخيسن الفياض</div>
+            <div class="name-item">بدر الصالح الخليفة</div>
+            <div class="name-item">ابراهيم الصالح الحميدان</div>
+            <div class="name-item">احمد ابراهيم الخلف الحميدان</div>
+            <div class="name-item">عبادة الحمد الجابر الحميدان</div>
+            <div class="name-item">حسين الخلف الطعمة</div>
+            <div class="name-item">حسن الخلف الطعمة</div>
+            <div class="name-item">عبد الكريم الوادي الطعمة</div>
+            <div class="name-item">علي الوادي الطعمة</div>
+            <div class="name-item">عبد الرحمن الوادي الطعمة</div>
+            <div class="name-item">عبد اله النوادى الطعمة</div>
+            <div class="name-item">علي الجابر الطعمة</div>
+            <div class="name-item">اسماعيل الجابر الطعمة</div>
+            <div class="name-item">عبد الرزاق الجابر الطعمة</div>
+            <div class="name-item">عبد الناصر الجابر الطعمة</div>
+            <div class="name-item">طعمة الحمادي الطعمة</div>
+            <div class="name-item">خلف الحمادي الطعمة</div>
+            <div class="name-item">مصعب علي الجابر</div>
+            <div class="name-item">حمد الخلف المحمد</div>
+            <div class="name-item">محمد الخلف المحمد</div>
+            <div class="name-item">صالح الخلف المحمد</div>
+            <div class="name-item">خلف الصالح الحمد الصالح</div>
+            <div class="name-item">عبد الرحمن خلف الصالح</div>
+            <div class="name-item">بشير أحمد الصالح</div>
+            <div class="name-item">عبد الوهاب أحمد الصالح</div>
+            <div class="name-item">احمد العبود السميع الصالح</div>
+            <div class="name-item">خليل الحمدان الصالح</div>
+        </div>
+
+        <div class="grid-column">
+            <div class="name-item">رمضان الحمدان الصالح</div>
+            <div class="name-item">صالح الحمدان الصالح</div>
+            <div class="name-item">عبد الوهاب الحمادي الصالح</div>
+            <div class="name-item">احمد الحمادي الصالح</div>
+            <div class="name-item">خالد الطعمة الشيخين</div>
+            <div class="name-item">ابراهيم الطعمة الشيخين</div>
+            <div class="name-item">ابراهيم ياسين الحنشات</div>
+            <div class="name-item">عبد الوهاب الياسين الحنشات</div>
+            <div class="name-item">محمد اسماعيل الحنشات</div>
+            <div class="name-item">اسماعيل الحنشات</div>
+            <div class="name-item">ياسين صالح الحنشات</div>
+            <div class="name-item">احمد الصالح الحنشات</div>
+            <div class="name-item">خليل سالم الرزوق</div>
+            <div class="name-item">حسين العزاوي الرزوق</div>
+            <div class="name-item">خلف زين العليمي</div>
+            <div class="name-item">هلال زين العليمي</div>
+            <div class="name-item">عواد القدور</div>
+            <div class="name-item">فايز جاسم القدور</div>
+            <div class="name-item">يوسف حسين الجاسم القدور</div>
+            <div class="name-item">ناصر إبراهيم الدبهاني</div>
+            <div class="name-item">حسن إبراهيم الدبهاني</div>
+            <div class="name-item">محمد إبراهيم الدبهاني</div>
+            <div class="name-item">خليل إبراهيم الدبهاني</div>
+            <div class="name-item">مصطفى خلف الدبهاني</div>
+            <div class="name-item">همام صالح الدبهاني</div>
+            <div class="name-item">عثمان صالح الدبهاني</div>
+            <div class="name-item">ياسر الهادي الدبهاني</div>
+            <div class="name-item">أنس الهادي الدبهاني</div>
+            <div class="name-item">طارق الهادي الدبهاني</div>
+            <div class="name-item">عمران صالح الدبهاني</div>
+            <div class="name-item">حماده نواف الدبهاني</div>
+            <div class="name-item">اسماعيل الخلف الدبهاني</div>
+            <div class="name-item">حماده الخلف الدبهاني</div>
+            <div class="name-item">علي العواد الدبهاني</div>
+            <div class="name-item">صلاح المحمد الدبهاني</div>
+            <div class="name-item">عمار اسماعيل الدبهاني</div>
+            <div class="name-item">احمد اسماعيل الدبهاني</div>
+            <div class="name-item">عبد الحسين الدبهاني</div>
+            <div class="name-item">بلال عمار الدبهاني</div>
+            <div class="name-item">محمد الخضرالركيكة الدبهاني</div>
+            <div class="name-item">سامي الطه الركيكة الدبهاني</div>
+            <div class="name-item">خديجة اسماعيل الدوش</div>
+            <div class="name-item">خلفة الناصر زوجة علوش الدوش</div>
+            <div class="name-item">خضرة الفنش زوجة جابر الصالح الخلف</div>
+            <div class="name-item">عبود احمد الابراهيم السخني</div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+  </html>
+  
