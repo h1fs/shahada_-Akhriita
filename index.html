@@ -6,6 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-green: #007A3D;
@@ -21,8 +22,9 @@
             background-color: #ECEFF1;
             font-family: 'Cairo', sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
         }
 
         /* اللوحة الرئيسية */
@@ -35,30 +37,14 @@
             padding: 30px;
             box-sizing: border-box;
             background-image: 
-                radial-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.95)),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><polygon points="50,5 95,95 5,95" fill="none" stroke="%23007A3D" stroke-width="0.3" opacity="0.1"/></svg>'); /* زخرفة خفيفة */
+                radial-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.98));
         }
 
-        /* العلامة المائية في الخلفية (نسر/حمامة مبسطة) */
-        .memorial-board::before {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23007A3D" opacity="0.03"><path d="M12 2L2 22h20L12 2zm0 3.99L19.53 19H4.47L12 5.99z"/></svg>') no-repeat center;
-            background-size: contain;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        /* الشريط العلوي - العلم */
+        /* الشريط العلوي */
         .top-banner {
             background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
             color: #fff;
-            padding: 25px;
+            padding: 30px;
             text-align: center;
             border-radius: 6px;
             position: relative;
@@ -66,18 +52,9 @@
             z-index: 2;
         }
 
-        .top-banner::before {
-            content: "★  ★  ★";
-            display: block;
-            color: #E52B20;
-            font-size: 24px;
-            letter-spacing: 10px;
-            margin-bottom: 10px;
-        }
-
         .top-intro {
-            font-size: 14px;
-            line-height: 1.8;
+            font-size: 14.5px;
+            line-height: 1.9;
             font-weight: 600;
             margin: 0 0 20px 0;
             text-align: justify;
@@ -87,7 +64,7 @@
         }
 
         .main-title {
-            font-size: 28px;
+            font-size: 30px;
             font-weight: 900;
             margin: 0;
             color: #FFFFFF;
@@ -120,14 +97,14 @@
             gap: 12px;
             position: relative;
             z-index: 2;
+            margin-bottom: 30px;
         }
 
         .grid-column {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.8);
             border: 1px solid rgba(0, 122, 61, 0.15);
             border-radius: 4px;
-            padding: 5px;
+            padding: 6px;
         }
 
         .name-item {
@@ -140,25 +117,131 @@
             color: var(--text-dark);
             display: flex;
             align-items: center;
-            transition: all 0.3s ease;
             box-shadow: 0 2px 4px rgba(0,0,0,0.02);
         }
 
         .name-item::before {
             content: "✦";
-            color: #E52B20;
+            color: var(--gold-accent);
             margin-left: 8px;
-            font-size: 10px;
+            font-size: 11px;
         }
 
         .name-item:last-child {
             margin-bottom: 0;
+        }
+
+        /* قسم المطور والشعار وحسابات التواصل الفاخرة في الأسفل المنتصف */
+        .footer-developer-section {
+            margin-top: 20px;
+            border-top: 2px dashed rgba(0, 77, 38, 0.15);
+            padding-top: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* حاوية الشعار الدائرية الملكية */
+        .logo-container {
+            width: 85px;
+            height: 85px;
+            margin-bottom: 12px;
+            background: #ffffff;
+            border: 3px solid var(--primary-green);
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .logo-placeholder {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .dev-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--dark-green);
+            margin: 0 0 4px 0;
+        }
+
+        .dev-name {
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--primary-green);
+            margin: 0 0 15px 0;
+            letter-spacing: 0.5px;
+        }
+
+        /* أزرار وحسابات التواصل الاجتماعي */
+        .social-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .social-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: transform 0.2s ease, color 0.2s ease;
+            min-width: 90px;
+        }
+
+        .social-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .social-icon-wrapper {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 20px;
+            margin-bottom: 6px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* تدرجات ألوان الهويات البصرية للحسابات لإعطاء طابع عصري وثقة */
+        .instagram-style .social-icon-wrapper {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+        .facebook-style .social-icon-wrapper {
+            background-color: #1877F2;
+        }
+        .tiktok-style .social-icon-wrapper {
+            background-color: #000000;
+        }
+
+        .social-handle {
+            font-size: 12.5px;
+            font-weight: 700;
+            direction: ltr; /* لضمان ظهور الـ @ يسار اليوزر بشكل صحيح دائماً */
+            color: #555;
+        }
+
+        .social-card:hover .social-handle {
+            color: var(--primary-green);
         }
     </style>
 </head>
 <body>
 
 <div class="memorial-board">
+    
     <div class="top-banner">
         <p class="top-intro">
             محصلة ما قدمت وقدمت عشيرة #البوشعيب من قبيلة #البوسرايا منذ اندلاع الثورة السورية حتى التحرير ١٨٢ قتيل نحسبهم والله حسيبهم، من الشهداء ولا نزكي على الله أحد منهم أكثر من ١٢٠ مقاتل . ارتقوا على إمتداد جبهات القتال في سورية في دير الزور والحسكة والرقة حتى حلب وحماة وإدلب وتدمر وأطراف دمشق ، والأخرين قتلو جراء القصف والألغام وفي السجون ومنهم مجموعة إعلاميين الثورة قتلو أعدام ميداني في الخريطة
@@ -369,8 +452,14 @@
         </div>
 
     </div>
-</div>
 
-</body>
-  </html>
-  
+    <div class="footer-developer-section">
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo" class="logo-placeholder" onerror="this.style.display='none'; this.parentNode.innerHTML='<i class=\"fa-solid fa-shield-halved\" style=\"font-size:32px; color:var(--primary-green);\"></i>'">
+        </div>
+        
+        <p class="dev-title">تصميم وتطوير</p>
+        <h3 class="dev-name">أبو خالد الشعيبي</h3>
+        
+        <div class="social-container">
+            <a href="https://instagram.com/k5oi2
